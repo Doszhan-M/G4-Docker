@@ -7,6 +7,5 @@ from django.shortcuts import redirect
 class MyView(View):
     def get(self, request):
         if not  User.objects.filter(username='admin',).exists():
-            # User.objects.create_superuser(username='admin', password='django777', email='admin@admin.com')
-            pass
+            User.objects.create_superuser(username='admin', password='django777', email='admin@admin.com')
         return redirect('admin/')

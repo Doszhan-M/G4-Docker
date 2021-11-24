@@ -3,6 +3,10 @@ FROM python:3.9.5
 # set work directory
 WORKDIR /home/DjangoProject
 
+RUN groupadd --gid 1000 django \
+    && useradd --uid 1000 --gid django --shell /bin/bash --create-home django 
+
+RUN chown -R django:django /etc
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    postgres:
+        image: postgres:13
+        env_file:
+          - .env
+        volumes:
+        - ./pgdata:/var/lib/postgresql/data
+        expose:
+          - ${POSTGRES_PORT}
+          
+    django:
+        build: ./DjangoProject
+        restart: always
+        command: ["sh", "./entrypoint_web.sh"]
+        volumes: 
+          - ./DjangoProject/Web:/home/DjangoProject/
+        ports:
+          - 8000:8000
+        env_file:
+          - .env
+        depends_on:
+          - postgres
+
+        
