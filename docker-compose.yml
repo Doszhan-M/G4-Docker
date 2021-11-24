@@ -5,6 +5,9 @@ services:
         image: postgres:13
         env_file:
           - .env
+        volumes:
+        - ./pgdata:/var/lib/postgresql/data
+
         expose:
           - ${POSTGRES_PORT}
           
