@@ -1,2 +1,0 @@
-su - postgres
-initdb
