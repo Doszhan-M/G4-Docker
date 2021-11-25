@@ -18,7 +18,7 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY ./Web /home/DjangoProject/
-
+RUN mkdir -p /static
 # chown all the files to the django user
 RUN chown -R django:django /home/DjangoProject/
 
